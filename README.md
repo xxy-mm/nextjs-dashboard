@@ -1,5 +1,22 @@
-## Next.js App Router Course - Starter
+# Next.js App Router Course - Starter
 
-This is the starter template for the Next.js App Router Course. It contains the starting code for the dashboard application.
+## Next.js Version
 
-For more information, see the [course curriculum](https://nextjs.org/learn) on the Next.js Website.
+15.1.6
+
+## Error: Cannot find module 'nextjs-dashboard/node_modules/.pnpm/bcrypt@5.1.1/node_modules/bcrypt/lib/binding/napi-v3/bcrypt_lib.node'
+
+[github issue](https://github.com/vercel/next.js/discussions/76822)
+
+**How to resolve?**
+
+```bash
+pnpm remove bcrypt
+pnpm add bcryptjs
+```
+
+```ts
+// /app/seed/route.ts
+- import bcrypt from "bcrypt";
++ import bcrypt from "bcryptjs";
+```
