@@ -1,5 +1,5 @@
 import { Suspense } from 'react'
-import CardWrapper, { Card } from '../../ui/dashboard/cards'
+import CardWrapper from '../../ui/dashboard/cards'
 import LatestInvoices from '../../ui/dashboard/latest-invoices'
 import RevenueChart from '../../ui/dashboard/revenue-chart'
 import { lusitana } from '../../ui/fonts'
