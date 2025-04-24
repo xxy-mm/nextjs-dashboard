@@ -1,8 +1,8 @@
 import Form from '@/app/ui/invoices/edit-form'
 import Breadcrumbs from '@/app/ui/invoices/breadcrumbs'
 import { fetchCustomers, fetchInvoiceById } from '@/app/lib/data'
-import { UpdateInvoice } from '@/app/ui/invoices/buttons'
 import { updateInvoice } from '@/app/lib/actions'
+import { notFound } from 'next/navigation'
 
 export default async function Page(props: {
   params: Promise<{
@@ -14,6 +14,11 @@ export default async function Page(props: {
     fetchInvoiceById(id),
     fetchCustomers(),
   ])
+
+  if (!invoice) {
+    notFound()
+  }
+
   const updateInvoiceWithId = updateInvoice.bind(null, id)
 
   return (

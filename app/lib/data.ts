@@ -43,7 +43,7 @@ export async function fetchLatestInvoices() {
       ...invoice,
       amount: formatCurrency(invoice.amount),
     }))
-    // await new Promise((resolve) => setTimeout(resolve, 5000))
+
     return latestInvoices
   } catch (error) {
     console.error('Database Error:', error)
@@ -143,7 +143,9 @@ export async function fetchInvoicesPages(query: string) {
   }
 }
 
-export async function fetchInvoiceById(id: string) {
+export async function fetchInvoiceById(
+  id: string
+): Promise<InvoiceForm | null> {
   try {
     const data = await sql<InvoiceForm[]>`
       SELECT
@@ -164,7 +166,7 @@ export async function fetchInvoiceById(id: string) {
     return invoice[0]
   } catch (error) {
     console.error('Database Error:', error)
-    throw new Error('Failed to fetch invoice.')
+    return null
   }
 }
 
